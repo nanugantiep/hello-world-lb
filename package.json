@@ -19,7 +19,8 @@
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^1.0.1",
     "loopback-datasource-juggler": "^2.39.0",
-    "platform.shared.swagger-resilient": "^0.0.7"
+    "platform.shared.resilient-eureka": "^0.0.7",
+    "platform.shared.swagger-resilient": "^0.0.10"
   },
   "devDependencies": {
     "eslint": "^2.13.1",
