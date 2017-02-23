@@ -5,7 +5,7 @@ var log = require('../lib/logger');
 
 module.exports = function(Person) {
 
-/************** GetUSer Method ***********/
+/************** GetUSer BY Id  ***********/
 Person.remoteMethod('getPeronFromMiddle',{
     http: {
         path: '/:id',
@@ -47,7 +47,7 @@ Person.getPeronFromMiddle = function(paramId,cb){
       }
     }
 };
-    /************** Post  Method ***********/
+    /************** Post User Method ***********/
 Person.remoteMethod('postUserToMiddle',{
     http: {
         path: '/',
@@ -70,31 +70,31 @@ Person.remoteMethod('postUserToMiddle',{
 });
 
 Person.postUserToMiddle = function(paramPerson, cb){
-    //  var MiddleService = loopback.getModel('MiddleService');
+     var MiddleService = loopback.getModel('MiddleService');
 
-    // log.debug('paramGreeting', paramGreeting);
+    log.debug('paramGreeting', paramPerson);
 
-    // MiddleService.createUsingPUT({greeting: paramGreeting,
-    //   ACCEPT: '*/*'},
-    //   {responseContentType: 'application/json',
-    //     contentType: 'application/json',
-    //     accept: 'application/json'},
-    //   handleResponse
-    // );
+    MiddleService.CreateUserUsingPOST({user: paramPerson, ACCEPT: '*/*'},
+      {
+        responseContentType: 'application/json',
+        contentType: 'application/json',
+        accept: 'application/json'},
+        handleResponse
+    );
 
-    // function handleResponse(err, res) {
-    //   if (err) {
-    //     log.error(err.status);
-    //     log.error('Error: ', err);
-    //     cb(err, 'Error Occurred');
-    //   } else {
-    //     log.info('Success');
-    //     log.info('Response Status Code From Middle: ', res.status);
-    //     //middle is not sending in data any more for PUT requests
-    //     cb(null, 'Successfully added Greeting');
-    //   }
-    //   // Make adjustments to the middle payload before sending out as edge payload, as needed
-    // }
+    function handleResponse(err, res) {
+      if (err) {
+        log.error(err.status);
+        log.error('Error: ', err);
+        cb(err, 'Error Occurred');
+      } else {
+        log.info('Success');
+        log.info('Response Status Code From Middle: ', res.status);
+        //middle is not sending in data any more for PUT requests
+        return  'Successfully added Person';
+      }
+      // Make adjustments to the middle payload before sending out as edge payload, as needed
+    }
 
     cb(null, 'Successfully added Person');
 };
