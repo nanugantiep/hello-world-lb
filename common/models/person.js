@@ -91,12 +91,12 @@ Person.postUserToMiddle = function(paramPerson, cb){
         log.info('Success');
         log.info('Response Status Code From Middle: ', res.status);
         //middle is not sending in data any more for PUT requests
-        return  'Successfully added Person';
+        cb(null, 'Successfully added Person');
       }
       // Make adjustments to the middle payload before sending out as edge payload, as needed
     }
 
-    cb(null, 'Successfully added Person');
+    
 };
 
 };
