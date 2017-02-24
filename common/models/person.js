@@ -31,7 +31,7 @@ Person.getPeronFromMiddle = function(paramId,cb){
        
     var MiddleService = loopback.getModel('MiddleService');
 
-    MiddleService.GetUserInfoUsingGET({},handleResponse);
+    MiddleService.GetUserInfoUsingGET({id: paramId},handleResponse);
 
     function handleResponse(err, res) {
         log.info('handling response');

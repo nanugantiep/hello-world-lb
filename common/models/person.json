@@ -7,11 +7,11 @@
     "validateUpsert": true
   },
   "properties": {
-    "firstname": {
+    "firstName": {
       "type": "string",
       "required": true
     },
-    "lastname": {
+    "lastName": {
       "type": "string",
       "required": true
     },
